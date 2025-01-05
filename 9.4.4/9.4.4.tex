@@ -56,7 +56,8 @@ $\sec^2 x \tan y \, dx + \sec^2 y \tan x \, dy = 0$
 \solution\\
 Divide the given equation with $\tan x \tan y$
 \begin{align}
-    \frac{\sec^2 x \, dx}{\tan x} + \frac{\sec^2 y \, dy}{\tan y} = 0
+    \frac{\sec^2 x \, dx}{\tan x} + \frac{\sec^2 y \, dy}{\tan y} = 0\\
+    \frac{dy}{dx}=-\frac{sin2y}{sin2x}\label{1}
 \end{align}
 Substitute $\tan x$ as u and $\tan y$ as v
 \begin{align}
@@ -82,12 +83,12 @@ Here no initial condition is given so let us take $X_{0}=\pi/4,Y_{0}=\pi/4$ whic
 \end{align}
 Now let us  this computationally from the definition of $\frac{dy}{dx}$ 
 \begin{align}
-    Y_{n+1}=Y_n+\frac{dy}{dx}.h
+    Y_{n+1}=Y_n+\frac{dy}{dx}\cdot h
 \end{align}
-From the differential equation
+From the differential equation \ref{1}
 \begin{align}
-    \frac{dy}{dx}=\frac{y_n-x_n}{y_n+x_n}.h\\
-    y_{n+1}=y_n+\brak{\frac{y_n-x_n}{y_n+x_n}}.h
+    \frac{dy}{dx}=-\frac{sin2y}{sin2x}\\
+    y_{n+1}=y_n-\frac{sin2y}{sin2x}\cdot h
 \end{align}
 BY taking $x_0$=0 and $y_0$=1 and h=0.01  by iterating through the loop a 100 times and finding $y_2,y_3,y_4,\cdots$ and plotting the graph. we can verify the function we got by solving the differential equation mathematically
 
@@ -99,4 +100,3 @@ BY taking $x_0$=0 and $y_0$=1 and h=0.01  by iterating through the loop a 100 ti
 
 
 \end{document}
-
