@@ -35,7 +35,7 @@ x_values = [x_points[i] for i in range(n)]
 y_values = [y_points[i] for i in range(n)]
 
 # Plot the simulation results
-plt.plot(x_values, y_values, label="Simulation", marker='o', markersize=3, color='blue')
+plt.plot(x_values, y_values, label="sim", marker='o', markersize=3, color='blue')
 
 # Theoretical function: y = math.radians(180)/2 - x
 x0 = math.radians(45)
