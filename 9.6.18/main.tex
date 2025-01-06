@@ -44,7 +44,7 @@
 \renewcommand{\thetable}{\theenumi}
 \begin{document}
 \bibliographystyle{IEEEtran}
-\title{9.6.18}
+\title{9.4.4}
 \author{EE24BTECH11033 - KOLLURU SURAJ}
 % \maketitle
 % \newpage
@@ -78,16 +78,28 @@ Take initial condition as x= 1, y= 1. We get c= -1
     y=2x^2- x
 \end{align}
 
-Now let us  this computationally from the definition of $\frac{dy}{dx}$ 
+
+\noindent\textbf{Numerical Approach:}\\1. I used a for loop for finding the $y$ values as the loop proceeds with iterative formula given below. I took some initial value of $x$ and as loop proceeds I assigned it the value as $x+h$. where $h$ is the step size, representing the rate of change. 
+\\2. Assigned the values of $y$ for different $x$-values using a for loop. \\ 
+3. Here the initial value of x is 1 and y is 1\\
+\\ \textbf{Using the Method of Finite Differences}\\
+The Method of Finite Differences is a numerical technique used to approximate solutions to differential equations. 
+
+We know that:
 \begin{align}
-    Y_{n+1}=Y_n+\frac{dy}{dx}\cdot h
+   \lim_{h \to 0} \frac{y(x+h) - y(x)}{h} &= \frac{dy}{dx} 
 \end{align}
-From the differential equation \ref{1}
+For the given differential equation \ref{1},
 \begin{align}
-    \frac{dy}{dx}=\frac{y}{x}+2x\\
-    y_{n+1}=y_n+ \brak{\frac{y_n}{x_n}+2x_n}\cdot h
+    \frac{dy}{dx}&= \frac{y}{x}+2x\\
+    \frac{y_{n+1} - y_n}{h}&\approx \frac{y_n}{x_n}+2x_n\\
+    y_{n+1} &= y_n + \brak{\frac{y_n}{x_n}+2x_n}\cdot h
 \end{align}
-BY taking $x_0$=1 and $y_0$=1 and h=0.01  by iterating through the loop a 100 times and finding $y_2,y_3,y_4,\cdots$ and plotting the graph. we can verify the function we got by solving the differential equation mathematically
+The iterative formula for updating $x$-values is: 
+\begin{align}
+    x_n=x_{n-1}+h
+\end{align}
+Using Matplotlib, I plotted the computed points and the graph of the exact solution to verify that they approximately match
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\columnwidth]{figs/Figure_1.png}
