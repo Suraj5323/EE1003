@@ -54,6 +54,13 @@
 Find the area of the region bounded by $y^2=9x$, $x=2$, $x=4$ and the x-axis in the first quadrant.
 \\\\
 \solution\\
+If the area is calulated directly using integration it would be 
+\begin{align}
+     A= \int_{2}^{4} 3\sqrt{x}dx\\
+     A=\sbrak{3\cdot \frac{2}{3} x^{3/2}}_2^4\\
+     A =10.343146
+\end{align}
+Let's try to verify this computationally using Trapezoidal rule\\
 \textbf{Some theory about Trapezoidal rule:}\\
 The idea behind the trapezoidal rule is to approximate the region under the curve of the function as a series of trapezoids, rather than using rectangles. The area of each trapezoid is then computed and summed to estimate the total area under the curve (the integral).
 First we need to set up the integral\\
@@ -80,10 +87,8 @@ Using a C code to find the area using trapezoidal rule, The area is
 \begin{align}
     A\approx 10.343135
 \end{align}
-If the area is calulated directly using integration it would be 10.343146 which is so close to the one we found using trapezoidal rule
 
-
-
+which appears to be very close to the area we got from the trapezoidal rule.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\columnwidth]{figs/Figure_1.png}

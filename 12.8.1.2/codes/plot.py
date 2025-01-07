@@ -26,7 +26,6 @@ plt.ylim([0, 8])  # Increased the upper limit of the y-axis
 # Add labels and a title
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Shaded Area between the curve $y^2 = 9x$ and the x-axis')
 
 # Add a legend
 plt.legend()
