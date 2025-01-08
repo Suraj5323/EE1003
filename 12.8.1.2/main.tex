@@ -71,24 +71,40 @@ Area under curve is given by
 
 We will approximate this using trapezoidal rule. Divide the interval [2,4] into 100 subintervals with each of width $h=\frac{4-2}{100}=\frac{1}{50}$, Let:
 \begin{align}
-x_0=2,x_1=x_0+h,x_2=x_1+h,....x_n=4
+x_0=2,x_1=x_0+h,x_2=x_1+h,....x_n=4\label{1}
 \end{align}
-The trapezoidal rule for approximating the integral becomes:
-
+Let $A\brak{x_n}$ be the area enclosed by the curve $y\brak{x}$ from $x=x_0$ to $x=x_n$, $\brak{x_0, x_1, \dots x_n}$ be equidistant points with step-size $h$.
 \begin{align}
-    A \approx\frac{h}{2}[f(x_0)+ 2\sum_{i=1}^{n-1} f(x_i) +f(x_n)]\label{1}
+  A\brak{x_n+h}=A\brak{x_n}+\frac{1}{2}h\brak{y\brak{x_n+h}+y\brak{x_n}}
 \end{align}
-where $f(x)= \sqrt{3}x$. Substituting it in \ref{1} gives
+where $\frac{1}{2}h\brak{y\brak{x_n+h}+y\brak{x_n}}$ is area of difference trapezium
+We can repeat this till we get the required area.\\
+Let $A(x_n)=A_n$ and $y(x_n)=y_n$
 \begin{align}
-     A \approx\frac{3h}{2}[\sqrt{x_0}+ 2\sum_{a=1}^{n-1} \sqrt{x_i} +\sqrt{x_n}]
+        A_{n+1}=A_n+\frac{1}{2}h\brak{y_{n+1}+y_n}
 \end{align}
-This is a difference equation because it expresses the total area A as a sum of terms at discrete points $x_i$, with a recurrence-like structure for the summation.\\
-Using a C code to find the area using trapezoidal rule, The area is
+We can write $y_{n+1}$ in terms of $y_n$ using first principle of derivative. $y_{n+1}=y_n+hy^{\prime}_n$
 \begin{align}
-    A\approx 10.343135
+  A_{n+1}&=A_n+\frac{1}{2}h\brak{\brak{y_{n}+hy^{\prime}_n}+y_n}\\
+  A_{n+1}&=A_n+\frac{1}{2}h\brak{2y_n+hy^{\prime}_n}\\
+  A_{n+1}&=A_n+hy_n+\frac{1}{2}h^2y^{\prime}_n \label{2} \\
 \end{align}
-
-which appears to be very close to the area we got from the trapezoidal rule.
+from \ref{1} 
+\begin{align}
+    x_{n+1}&=x_n+h
+\end{align}
+In the given question, $y_n^2=9x_n$ and $y^{\prime}_n=\frac{3}{2\sqrt{x}}$\newline
+General Difference Equation is given by, from \ref{2}
+\begin{align}
+  A_{n+1}&=A_n+hy_n+\frac{1}{2}h^2y^{\prime}_n\\
+  &=A_n+h\brak{3\sqrt{x_n}}+\frac{1}{2}h^2\brak{\frac{3}{2\sqrt{x_n}}}\\
+  x_{n+1}&=x_n+h
+\end{align}
+Using a C code we get the final area as
+\begin{align}
+    A\approx10.34317
+\end{align}
+which is closer to the theoritical solution hence this is correct
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\columnwidth]{figs/Figure_1.png}
