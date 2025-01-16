@@ -101,9 +101,77 @@ The output of a program written to find roots is shown below:
 	r_1 =-1.6861 \\
 	r_2 = 1.1859
 \end{align}
+\textbf{CODING LOGIC FOR FINDING EIGENVALUES :-}\\
+
+
+The quadratic equation 
+\begin{align}
+2x^2+x-4=0
+\end{align}
+is rewritten in matrix form:
+\begin{align}
+\text{Matrix} =
+\myvec{0 & -\frac{c}{a} \\
+1 & -\frac{b}{a}
+}
+\end{align}
+
+\begin{align}
+a = 2, \quad b=1, \quad c = -4.
+\end{align}
+
+Substituting the values of $a,b$ and $c$, the matrix becomes:\\
+Let
+\begin{align}
+\text{A} =
+\myvec{0 & 2 \\
+1 & -\frac{1}{2}
+}
+\end{align}
+
+
+
+
+\textbf{QR-Algorithm}\\
+The QR method is an iterative algorithm used to compute the eigenvalues of a square matrix $A$. The algorithm works as follows:
+\begin{enumerate}
+    
+\item Initialization \\
+Let $A_0 = A $, where $A$ is the given matrix.
+
+\item QR Decomposition \\
+For each iteration $ k = 0, 1, 2, \dots $:
+\begin{enumerate}
+    \item Compute the QR decomposition of \( A_k \), such that:
+    \begin{align}
+    A_k = Q_k R_k
+    \end{align}
+    where:
+    \begin{enumerate}
+        \item $Q_k $ is an orthogonal matrix ($ Q_k^\top Q_k = I $).
+        \item $ R_k $ is an upper triangular matrix.
+    \end{enumerate}
+    The decomposition ensures $ A_k = Q_k R_k $.
+
+    \item Form the next matrix \( A_{k+1} \) as:
+    \begin{align}
+    A_{k+1} = R_k Q_k
+    \end{align}
+\end{enumerate}
+
+\item Convergence\\
+Repeat Step 2 until $ A_k $ converges to an upper triangular matrix $ T $. The diagonal entries of $T$ are the eigenvalues of $A$.\\
+\item The eigenvalues of matrix will be the roots of the equation.\\
+The roots we get by using this method are 
+\begin{align}
+    x_1=1.18614066\\
+    x_2=-1.68614066
+\end{align}
+\end{enumerate}
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\columnwidth]{figs/Figure_1.png}
     \caption{}
 \end{figure}
 \end{document}
+
